@@ -10,7 +10,8 @@ if __name__ == "__main__":
     if k == 0:
         print("{} arguments.".format(k))
     elif k == 1:
-        print("{} argument:".format(k, sys.argv[k]))
+        print("{} argument:".format(k))
+        print("{}: {}".format(k, sys.argv[k]))
     else:
         print("{} arguments:".format(k))
         for p in range(k):
