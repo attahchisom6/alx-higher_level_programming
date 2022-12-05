@@ -2,8 +2,9 @@
 
 def multiple_returns(sentence):
     x = len(sentence)
-    y = sentence[0]
-    tup = (x, y)
     if x == 0:
-        tup = (x, None)
+        tup = (0, None)
+    else:
+        y = sentence[0]
+        tup = (x, y)
     return (tup)
