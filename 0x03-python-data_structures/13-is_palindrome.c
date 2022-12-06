@@ -1,114 +1,78 @@
 #include "lists.h"
 
 /**
- * reverse - reverses the second half of the list
+ * list_size - this function will get the size of a singly linked
+ * list
+ * @head:a double pointer to the firt node
  *
- * @h_r: head of the second half
- * Return: no return
+ * Return:size of the linked  list
  */
-void reverse(listint_t **h_r)
+
+int list_size(listint_t **head)
 {
-	listint_t *prv;
-	listint_t *crr;
-	listint_t *nxt;
+	int size = 0;
+	listint_t *curr = *head;
 
-	prv = NULL;
-	crr = *h_r;
-
-	while (crr != NULL)
+	while (curr != NULL)
 	{
-		nxt = crr->next;
-		crr->next = prv;
-		prv = crr;
-		crr = nxt;
+		curr = curr->next;
+		size++;
 	}
-
-	*h_r = prv;
+	return (size);
 }
 
 /**
- * compare - compares each int of the list
+ * get_value_at_idx - this function will get the value of a node
+ * give a valid index
+ * @head:A double pointer to the first node
+ * @idx:index of the node whose value we seek
  *
- * @h1: head of the first half
- * @h2: head of the second half
- * Return: 1 if are equals, 0 if not
+ * Return:value at the given index
  */
-int compare(listint_t *h1, listint_t *h2)
+
+int get_value_at_idx(listint_t **head, int idx)
 {
-	listint_t *tmp1;
-	listint_t *tmp2;
+	int k = 0;
+	listint_t *curr = *head;
 
-	tmp1 = h1;
-	tmp2 = h2;
-
-	while (tmp1 != NULL && tmp2 != NULL)
+	while (curr != NULL)
 	{
-		if (tmp1->n == tmp2->n)
-		{
-			tmp1 = tmp1->next;
-			tmp2 = tmp2->next;
-		}
-		else
-		{
-			return (0);
-		}
+		if (k == idx)
+			break;
+		curr = curr->next;
+		k++;
 	}
-
-	if (tmp1 == NULL && tmp2 == NULL)
-	{
-		return (1);
-	}
-
-	return (0);
+	return (curr->n);
 }
 
 /**
- * is_palindrome - checks if a singly linked list
- * is a palindrome
- * @head: pointer to head of list
- * Return: 0 if it is not a palindrome,
- * 1 if it is a palndrome
+ * is_palindrome - this function will check if a singly linked
+ * list is a palindrome
+ * @head:a double pointer to the first node
+ *
+ * Return:1 if it is palindrome otherwise 0
  */
+
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow, *fast, *prev_slow;
-	listint_t *scn_half, *middle;
-	int isp;
+	int begin, end;
 
-	slow = fast = prev_slow = *head;
-	middle = NULL;
-	isp = 1;
+	if (head == NULL || *head == NULL)
+		return (1);
+	begin = 0;
+	end = list_size(head);
 
-	if (*head != NULL && (*head)->next != NULL)
+	end--;
+	while (begin <= end)
 	{
-		while (fast != NULL && fast->next != NULL)
-		{
-			fast = fast->next->next;
-			prev_slow = slow;
-			slow = slow->next;
-		}
+		int g, h;
 
-		if (fast != NULL)
-		{
-			middle = slow;
-			slow = slow->next;
-		}
-
-		scn_half = slow;
-		prev_slow->next = NULL;
-		reverse(&scn_half);
-		isp = compare(*head, scn_half);
-
-		if (middle != NULL)
-		{
-			prev_slow->next = middle;
-			middle->next = scn_half;
-		}
-		else
-		{
-			prev_slow->next = scn_half;
-		}
+		g = get_value_at_idx(head, begin);
+		h = get_value_at_idx(head, end);
+		if (g != h)
+			return (0);
+		begin++;
+		end--;
 	}
-
-	return (isp);
+	return (1);
 }
