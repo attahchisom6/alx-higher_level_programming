@@ -46,7 +46,7 @@ int get_value_at_idx(listint_t **head, int idx)
 }
 
 /**
- * int is_palindrome - this function will check if a singly linked
+ * is_palindrome - this function will check if a singly linked
  * list is a palindrome
  * @head:a double pointer to the first node
  *
