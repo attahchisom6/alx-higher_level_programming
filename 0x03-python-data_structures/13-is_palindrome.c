@@ -12,7 +12,7 @@ int list_size(listint_t **head)
 {
 	int size = 0;
 	listint_t *curr = *head;
-	
+
 	while (curr != NULL)
 	{
 		curr = curr->next;
@@ -34,7 +34,7 @@ int get_value_at_idx(listint_t **head, int idx)
 {
 	int k = 0;
 	listint_t *curr = *head;
-	
+
 	while (curr != NULL)
 	{
 		if (k == idx)
@@ -56,7 +56,7 @@ int get_value_at_idx(listint_t **head, int idx)
 int is_palindrome(listint_t **head)
 {
 	int begin, end;
-	
+
 	begin = 0;
 	end = list_size(head);
 
