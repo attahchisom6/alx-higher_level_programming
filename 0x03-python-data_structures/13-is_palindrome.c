@@ -1,72 +1,78 @@
 #include "lists.h"
 
 /**
- * reverse_listint - reverses a linked list
- * @head: pointer to the first node in the list
+ * list_size - this function will get the size of a singly linked
+ * list
+ * @head:a double pointer to the firt node
  *
- * Return: pointer to the first node in the new list
+ * Return:size of the linked  list
  */
-void reverse_listint(listint_t **head)
+
+int list_size(listint_t **head)
 {
-	listint_t *prev = NULL;
-	listint_t *current = *head;
-	listint_t *next = NULL;
+	int size = 0;
+	listint_t *curr = *head;
 
-	while (current)
+	while (curr != NULL)
 	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
+		curr = curr->next;
+		size++;
 	}
-
-	*head = prev;
+	return (size);
 }
 
 /**
- * is_palindrome - checks if a linked list is a palindrome
- * @head: double pointer to the linked list
+ * get_value_at_idx - this function will get the value of a node
+ * give a valid index
+ * @head:A double pointer to the first node
+ * @idx:index of the node whose value we seek
  *
- * Return: 1 if it is, 0 if not
+ * Return:value at the given index
  */
+
+int get_value_at_idx(listint_t **head, int idx)
+{
+	int k = 0;
+	listint_t *curr = *head;
+
+	while (curr != NULL)
+	{
+		if (k == idx)
+			break;
+		curr = curr->next;
+		k++;
+	}
+	return (curr->n);
+}
+
+/**
+ * is_palindrome - this function will check if a singly linked
+ * list is a palindrome
+ * @head:a double pointer to the first node
+ *
+ * Return:1 if it is palindrome otherwise 0
+ */
+
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
+	int begin, end;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*head != NULL || (*head)->next != NULL)
 		return (1);
+	begin = 0;
+	end = list_size(head);
 
-	while (1)
+	end--;
+	while (begin <= end)
 	{
-		fast = fast->next->next;
-		if (!fast)
-		{
-			dup = slow->next;
-			break;
-		}
-		if (!fast->next)
-		{
-			dup = slow->next->next;
-			break;
-		}
-		slow = slow->next;
-	}
+		int g, h;
 
-	reverse_listint(&dup);
-
-	while (dup && temp)
-	{
-		if (temp->n == dup->n)
-		{
-			dup = dup->next;
-			temp = temp->next;
-		}
-		else
+		g = get_value_at_idx(head, begin);
+		h = get_value_at_idx(head, end);
+		if (g != h)
 			return (0);
+		begin++;
+		end--;
 	}
-
-	if (!dup)
-		return (1);
-
-	return (0);
+	return (1);
 }
