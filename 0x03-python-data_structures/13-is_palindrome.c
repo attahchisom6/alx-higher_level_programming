@@ -57,7 +57,7 @@ int is_palindrome(listint_t **head)
 {
 	int begin, end;
 
-	if (*head != NULL || (*head)->next != NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 	begin = 0;
 	end = list_size(head);
