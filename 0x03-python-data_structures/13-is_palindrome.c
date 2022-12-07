@@ -64,6 +64,7 @@ int is_palindrome(listint_t **head)
 		{
 			mid = mid->next;
 			temp = temp->next;
+			return (1);
 		}
 		else
 			return (0);
