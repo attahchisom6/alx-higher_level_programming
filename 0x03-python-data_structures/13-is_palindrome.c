@@ -1,78 +1,71 @@
 #include "lists.h"
 
 /**
- * list_size - this function will get the size of a singly linked
- * list
- * @head:a double pointer to the firt node
- *
- * Return:size of the linked  list
- */
-
-int list_size(listint_t **head)
-{
-	int size = 0;
-	listint_t *curr = *head;
-
-	while (curr != NULL)
-	{
-		curr = curr->next;
-		size++;
-	}
-	return (size);
-}
-
-/**
- * get_value_at_idx - this function will get the value of a node
- * give a valid index
- * @head:A double pointer to the first node
- * @idx:index of the node whose value we seek
- *
- * Return:value at the given index
- */
-
-int get_value_at_idx(listint_t **head, int idx)
-{
-	int k = 0;
-	listint_t *curr = *head;
-
-	while (curr != NULL)
-	{
-		if (k == idx)
-			break;
-		curr = curr->next;
-		k++;
-	}
-	return (curr->n);
-}
-
-/**
- * is_palindrome - this function will check if a singly linked
- * list is a palindrome
+ * reverse_list - function to reverse a list
  * @head:a double pointer to the first node
  *
- * Return:1 if it is palindrome otherwise 0
+ * Return:pointer to the first node
+ */
+
+listint_t *reverse_list(listint_t **head)
+{
+	listint_t *next;
+	listint_t *prev = NULL;
+	listint_t *curr = *head;
+
+	while (curr != NULL)
+	{
+		next = curr->next;
+		curr->next = prev;
+
+		prev = curr;
+		curr = next;
+	}
+	*head = prev;
+
+	return (*head);
+}
+
+/**
+ * is_palindrome - function to checkk if a singly list is a palindrome
+ * @head:double pointer to the first node
+ *
+ * Return:1 if its a palindrome, 0 otherwise
  */
 
 int is_palindrome(listint_t **head)
 {
-	int begin, end;
-
+	listint_t *fast = *head, *slow = *head, *temp = *head, *mid = NULL;
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	begin = 0;
-	end = list_size(head);
 
-	end--;
-	while (begin <= end)
+	while (1)
 	{
-		int g, h;
-
-		g = get_value_at_idx(head, begin);
-		h = get_value_at_idx(head, end);
-		if (g != h)
-			return (0);
-		begin++;
-		end--;
+		fast = fast->next->next;
+		if (fast == NULL)
+		{
+			mid = slow->next;
+			break;
+		}
+		if (fast->next == NULL)
+		{
+			mid = slow->next->next;
+			break;
+		}
+		mid = slow->next;
 	}
-	return (1);
+	mid = reverse_list(&mid);
+	
+	while (mid->next != NULL && temp->next != NULL)
+	{
+		mid = mid->next;
+		temp = temp->next;
+
+		if (mid->n != temp->n)
+			return (0);
+		return (1);
+	}
+	if (mid == NULL)
+		return (1);
+	return (0);
 }
