@@ -53,7 +53,7 @@ int is_palindrome(listint_t **head)
 			mid = slow->next->next;
 			break;
 		}
-		slow = slow->next;
+		mid = slow->next;
 	}
 	mid = reverse_list(&mid);
 
