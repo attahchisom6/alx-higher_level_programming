@@ -60,14 +60,13 @@ int is_palindrome(listint_t **head)
 	while (mid != NULL && temp !=  NULL)
 	{
 
-		if (mid->n != temp->n)
-			return (0);
-		else
+		if (mid->n == temp->n)
 		{
 			mid = mid->next;
 			temp = temp->next;
-			return (1);
 		}
+		else
+			return (0);
 	}
 	if (mid == NULL)
 		return (1);
