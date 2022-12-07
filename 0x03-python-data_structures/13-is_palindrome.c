@@ -43,11 +43,14 @@ int is_palindrome(listint_t **head)
 	while (1)
 	{
 		fast = fast->next->next;
+		/*if the list is even fast gets to NULL*/
 		if (fast == NULL)
 		{
 			mid = slow->next;
 			break;
 		}
+		/*if the list is odd fast->next gets to NULL*/
+		/*we skip the middle and store it in mid*/
 		if (fast->next == NULL)
 		{
 			mid = slow->next->next;
