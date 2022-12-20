@@ -3,9 +3,9 @@
 def list_division(my_list_1, my_list_2, list_length):
 
     new_list = []
-    result = 0
 
     for k in range(list_length):
+        result = 0
         try:
             result = my_list_1[k] / my_list_2[k]
 
