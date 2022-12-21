@@ -13,7 +13,9 @@ class Square:
             @size
         """
 
-        self.__size = size
+        """Note: since it's stated that size in this initialization is
+        optional, u can use, size for public or __size for private if u want"""
+        self.size = size
 
     @property
     def size(self):
