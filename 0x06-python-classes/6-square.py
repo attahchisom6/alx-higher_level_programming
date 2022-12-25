@@ -21,8 +21,8 @@ class Square():
             @size:length of the square
         """
 
-        self.size = size
-        self.position = position
+        self.__size = size
+        self.__position = position
 
     """private instances"""
     @property
