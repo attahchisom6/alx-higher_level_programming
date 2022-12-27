@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 
-"""defining a singly linked class"""
+"""defining a singly linked list"""
 
 
 class Node:
-    """A singly linked class"""
+    """A Node class"""
 
     def __init__(self, data, next_node=None):
-        """initailizing a class object to store node data, and a pointer
-        to the next node
+        """initiating a  class object to store integer data unto a nodd
 
         Args:
-            @self:class instanctiator
-            @data:data to store in each node
-            @next_node:pointer to the next node
+            @self:object initiator
+            @data:integer data.
+            @next_node:the next node
         """
 
         self.data = data
@@ -44,33 +43,43 @@ class Node:
 
 
 class SinglyLinkedList:
-    """creating a singly linked list"""
+    """A singly linked class"""
 
     def __init__(self):
-        """creating object to store the node
-        a private instance
+        """"object to initialize a linked list
+        private instance
         """
 
         self.__head = None
 
     """public instance"""
     def sorted_insert(self, value):
-        new = self.__head
+        new = Node(value)
 
-        if new is None or self.__head.data >= value:
-            self. __head = Node(value, self.__head)
+        if self.__head is None:
+            self.__head = new
+            new.next_node = None
+            new.data = value
+
+        elif self.__head.data > value:
+            new.next_node = self.__head
+            self.__head = new
+            new.data = value
+
         else:
             temp = self.__head
+
             while temp.next_node is not None and temp.next_node.data < value:
                 temp = temp.next_node
-            temp.next_node = Node(value, temp.next_node)
+            new.next_node = temp.next_node
+            temp.next_node = new
+            new.data = value
 
     def __str__(self):
-        temp = self.__head
         valueList = []
+        temp = self.__head
 
         while temp is not None:
             valueList.append(str(temp.data))
             temp = temp.next_node
-
         return ("\n".join(valueList))
