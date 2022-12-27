@@ -60,10 +60,12 @@ class SinglyLinkedList:
             self.__head = new
             new.next_node = None
             new.data = value
+
         elif self.__head.data > value:
             new.next_node = self.__head
             self.__head = new
             new.data = value
+
         else:
             temp = self.__head
 
@@ -80,5 +82,4 @@ class SinglyLinkedList:
         while temp is not None:
             valueList.append(str(temp.data))
             temp = temp.next_node
-
         return ("\n".join(valueList))
