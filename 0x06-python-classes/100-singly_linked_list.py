@@ -54,6 +54,11 @@ class SinglyLinkedList:
 
     """public instance"""
     def sorted_insert(self, value):
+        """you can also use
+
+        new = Node(value, self.__head)
+
+        """
         new = Node(value)
 
         if self.__head is None:
