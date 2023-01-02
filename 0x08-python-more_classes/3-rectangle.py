@@ -56,11 +56,14 @@ class Rectangle:
 
     def __str__(self):
         if self.height == 0 or self.__width == 0:
-            print("")
+            return ""
         else:
             x = self.__width
             y = self.__height
+            str = ""
 
             for p in range(y):
-                print("#" * x)
-        return ""
+                for k in range(x):
+                    str = str + "#"
+                str = str + "\n"
+            return (str[:-1])
