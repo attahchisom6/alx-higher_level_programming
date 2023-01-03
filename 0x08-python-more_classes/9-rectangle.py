@@ -93,5 +93,7 @@ class Rectangle:
                 return (rect_2)
 
     @classmethod
+    """A square is essentially a rectangle with equal sides"""
+
     def square(cls, size=0):
         return cls(size, size)
