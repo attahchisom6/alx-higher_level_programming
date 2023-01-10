@@ -12,4 +12,4 @@ def save_to_json_file(obj, filename):
 
     with open(filename, "w", encoding="utf-8") as f:
         f = f.write(jstr)
-        return (jstr)
+        return (f)
