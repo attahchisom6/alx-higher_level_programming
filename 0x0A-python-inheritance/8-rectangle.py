@@ -22,6 +22,9 @@ class BaseGeometry:
             raise ValueError(self.name + " must be greater than 0")
 
 
+"""hello world"""
+
+
 class Rectangle(BaseGeometry):
     """derived class from BaseGeometr"""
     def __init__(self, width, height):
