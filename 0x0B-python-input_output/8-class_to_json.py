@@ -5,7 +5,7 @@ class definintion
 """
 
 
-def class_to_json(obk):
+def class_to_json(obj):
     """function to return the dictionary data structures of JASON serialization
     of an object
     """
