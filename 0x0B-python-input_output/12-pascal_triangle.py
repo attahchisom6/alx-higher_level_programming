@@ -7,7 +7,7 @@ def pascal_triangle(n):
     my_list = []
 
     if n <= 0:
-        return (my_list)
+        return []
     my_list = [[1]]
     while len(my_list) != n:
         tri = my_list[-1]
