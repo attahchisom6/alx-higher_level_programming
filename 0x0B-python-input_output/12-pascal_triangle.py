@@ -4,6 +4,7 @@
 
 
 def pascal_triangle(n):
+    """coding the pascal triangle"""
     my_list = []
 
     if n <= 0:
