@@ -6,6 +6,7 @@ at the end of the line containing the string
 
 
 def append_after(filename="", search_string="", new_string=""):
+    """initialize an empty line"""
     lines = ""
     with open(filename, "r", encoding="utf-8") as f:
         for ln in f:
