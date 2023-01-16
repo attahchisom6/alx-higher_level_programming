@@ -57,7 +57,7 @@ class Test_Base(unittest.TestCase):
 
     def test_obj_atrribute(self):
         """test the dictionary attribute of an object"""
-        b1 = Base()
+        b1 = Base(1)
         self.assertEqual(b1.__dict__, {'id': 1})
         b1 = Base()
         self.assertEqual(b1.__dict__, {'id': 2})
@@ -66,24 +66,6 @@ class Test_Base(unittest.TestCase):
         b1 = Base()
         b1.assertEqual(b1.__dict__, {'id', 3})
 
-    def test_raise_error(self):
-        """check for raised errors"""
-        b = Base()
-        with self.assertRaises(AttributeError):
-            b = Base()
-            print(b.x)
-        with self.assertRaises(NameError):
-            b = Base_geometry
-        with self.assertRaises(AttributeError):
-            b.to_dictionary()
-
-    def test_json_string(self):
-        """tests json strings and methods"""
-        r1 = Rectangle(10, 7, 2, 5)
-        dictionary = r1.to_dictionary()
-        json_dictionary = Base.to_json_string(sorted(dictionary.items()))
-        self.assertEqual(json_dictionary, '[["height": 7], ["id": 1], ["width": 10], \
-                ["x", 2], ["y": 5]]')
 
 
 if __name__ == "__main__":

@@ -3,7 +3,6 @@
 """defining a class"""
 import json
 import csv
-import pythonturtle
 import os.path
 
 
