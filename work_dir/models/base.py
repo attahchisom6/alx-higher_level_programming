@@ -37,8 +37,8 @@ class Base:
         else:
             """convert each item in the list to a dictionary"""
             for k in range(len(list_objs)):
-                obj = list_objs[k].to_dictionary()
-                dict_objs.append(obj)
+                dictt = list_objs[k].to_dictionary()
+                dict_objs.append(dictt)
             jstr_L = cls.to_json_string(dict_objs)
         with open(filename, "w") as f:
             f.write(jstr_L)
