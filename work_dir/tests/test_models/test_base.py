@@ -183,6 +183,16 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(json_output_L, [{"id": 45, "x": 2, "y": 4, "height": 15, "width": 17},
                                          {"id": 54, "x": 3, "y": 5, "height": 51, "width": 71}])
 
+        input_L = [
+                {"size": 9, "y": 5, "x": 12, "id": 89},
+                {"size": 12, "3x": 4, "y": 
+
+    def test_create(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        dictt = r1.to_dictionary()
+        r2 = Rectangle.create(**dictt)
+        self.assertEqual(str(r2), '[Rectangle] (1) 2/8 - 10/7')
+
     def tearDown(self):
         """reset each method, every time it runs, and remove
         every file created in the process"""
