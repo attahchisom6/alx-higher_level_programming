@@ -110,7 +110,7 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(json_dictt, '[]')
         self.assertFalse(type(dictt) == type(json_dictt))
 
-    def test_save_to_file(self):
+    def test_rectangular_objs(self):
         """test the save_to_file method"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
@@ -129,26 +129,76 @@ class Test_Base(unittest.TestCase):
         with open("Rectangle.json", "r") as f:
             sum_read = sum(list(map(lambda x: ord(x), f.read())))
             sum_expected = sum(list(map(lambda x: ord(x), '[{"y": 0, "x": 0, '
-                                        '"id": 3, "width", 10, "height": 7}, '
+                                        '"id": 3, "width": 10, "height": 7}, '
                                         '{"y": 0, "x": 0, "id": 4, '
                                         '"width": 2, "height": 4}]')))
             self.assertEqual(sum_read, sum_expected)
 
+
+    def test_empty_save_to_file(self):
+        """saving empty list to a file"""
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            empty = f.read()
+            self.assertEqual(empty, "[]")
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            empty = f.read()
+            self.assertEqual(empty, "[]")
+
+    def test_Square_objs(self):
+        """test square instances"""
+        s1 = Square(3, 5, 7, 8)
+        s2 = Square(4, 3)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json") as f:
+            sum_read = sum(list(map(lambda x: ord(x), f.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"size": 3, "x": 5, '
+                                        '"y": 7, "id": 8}, '
+                                        '{"size": 4, "x": 3, "y": 0, "id": 1}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+        s1 = Square(9, 7, 3)
+        s2 = Square(11, 2)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json") as f:
+            sum_read = sum(list(map(lambda x: ord(x), f.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"size": 9, "x": 7, '
+                                        '"y": 3, "id": 2}, '
+                                        '{"size": 11, "x": 2, "y": 0, "id": 3}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+    def test_to_jstring_and_from_json_string(self):
+        """Tests the two methods, to_json_string and from_json_string"""
+
+        input_L = [
+                {"id": 45, "x": 2, "y": 4, "height": 15, "width": 17},
+                {"id": 54, "x": 3, "y": 5, "height": 51, "width": 71}
+                ]
+        json_input_L = Rectangle.to_json_string(input_L)
+        json_output_L = Rectangle.from_json_string(json_input_L)
+        self.assertEqual(json_output_L, [{"id": 45, "x": 2, "y": 4, "height": 15, "width": 17},
+                                         {"id": 54, "x": 3, "y": 5, "height": 51, "width": 71}])
+
     def tearDown(self):
-        """reset each attribute on every mthod accessed
-        setUp(self) can also do this
-        """
+        """reset each method, every time it runs, and remove
+        every file created in the process"""
         Base._Base__nb_objects = 0
+
+        """removing json files"""
         try:
-            """removing rectangular instances"""
             os.remove("Rectangle.json")
-        except Exception:
+        except FileNotFoundError:
             pass
         try:
-            """removing square instances"""
             os.remove("Square.json")
         except Exception:
             pass
+
+        """removing csv files"""
         try:
             os.remove("Rectangle.csv")
         except Exception:
@@ -157,6 +207,3 @@ class Test_Base(unittest.TestCase):
             os.remove("Square.csv")
         except Exception:
             pass
-
-if __name__ == '__main__':
-    unittest.main()
