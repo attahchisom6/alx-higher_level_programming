@@ -185,13 +185,76 @@ class Test_Base(unittest.TestCase):
 
         input_L = [
                 {"size": 9, "y": 5, "x": 12, "id": 89},
-                {"size": 12, "3x": 4, "y": 
+                {"size": 12, "x": 4, "y": 7, "id": 18},
+                {"size": 15, "x": 4, "y": 23}
+                ]
+        json_input_L = Square.to_json_string(input_L)
+        json_output_L = Square.from_json_string(json_input_L)
+        self.assertEqual(json_output_L, [{"size": 9, "y": 5, "x": 12, "id": 89},
+                                         {"size": 12, "x": 4, "y": 7, "id": 18},
+                                         {"size": 15, "x": 4, "y": 23}])
+
+        input_L = None
+        json_input_L = Rectangle.to_json_string(input_L)
+        json_output_L = Rectangle.from_json_string(json_input_L)
+        self.assertEqual(json_output_L, [])
+
+        input_L = []
+        json_input_L = Rectangle.to_json_string(input_L)
+        json_output_L = Rectangle.from_json_string(json_output_L)
+        self.assertEqual(json_output_L, [])
 
     def test_create(self):
         r1 = Rectangle(10, 7, 2, 8)
         dictt = r1.to_dictionary()
         r2 = Rectangle.create(**dictt)
         self.assertEqual(str(r2), '[Rectangle] (1) 2/8 - 10/7')
+
+        r1 = Rectangle(10, 7)
+        dictt = r1.to_dictionary()
+        r2 = Rectangle.create(**dictt)
+        self.assertEqual(str(r2), "[Rectangle] (3) 0/0 - 10/7")
+        self.assertTrue(type(r1) == type(r2))
+        self.assertFalse(r1 == r2)
+        self.assertFalse(r1 is r2)
+
+        s1 = Square(3, 5, 9, 7)
+        dictt = s1.to_dictionary()
+        s2 = Square.create(**dictt)
+        self.assertEqual(str(s2), "[Square] (7) 5/9 - 3")
+        self.assertFalse(s1 == s2)
+        self.assertFalse(s1 is s2)
+        self.assertTrue(type(s1) == type(s2))
+
+        s1 = Square(3, 5)
+        dictt = s1.to_dictionary()
+        s2 = Square.create(**dictt)
+        self.assertEqual(str(s2), "[Square] (6) 5/0 - 3")
+        self.assertTrue(type(s1) == type(s2))
+
+        def test_load_from_file(self):
+            """function to test the load from file method
+            that loads out a list of dictiobary objects
+            """
+            r1 = Rectangle(10, 7, 2, 8)
+            r2 = Rectangle(2, 4)
+            Rectangle.save_to_file([r1, r2])
+            output_L = Rectangle.load_from_file()
+            self.assertEqual(str(r1), str(output_L[0]))
+            aelf.assertEqual(str(r2), str(output_L[1]))
+
+            r1 = Rectangle(10, 7)
+            r2 = Rectangle(2, 4)
+            Rectangle.save_to_file([r1, r2])
+            output_L = Rectangle.load_fron_file()
+            self.assertEqual(str(r1), str(output_L[0]))
+            self.assertEqual(str(r2), str(output_L[1]))
+
+            output_L = Rectangle.load_from_file()
+            self.assertEqual(str(output_L), [])
+            Rectangle.save_to_file(None)
+            output_L = Rectangle.load_from_file()
+            self.assertEqual(str(output_L), "[]")
 
     def tearDown(self):
         """reset each method, every time it runs, and remove
