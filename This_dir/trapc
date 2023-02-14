@@ -1,0 +1,15 @@
+#! /bin/bash
+
+#A PROGRAM TO CALL A FUNCTION WITH THE TRAP COMMAND AT THE EXIT OF THE SCRIPT
+
+func(){
+	   echo programm completed
+      }
+
+trap func exit
+
+for i in *
+do
+	echo $i
+done > >(awk '{print NR, $0}')
+

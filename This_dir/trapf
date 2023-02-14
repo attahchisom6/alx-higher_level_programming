@@ -1,0 +1,16 @@
+#! /bin/bash
+
+#THIS PROGRAM WILL TAKE TWO SIGINT i.e ^C BEFORE QUITING
+
+last=0
+allow_Quit(){
+	[ $((last+1)) -le $(date +%s) ] && exit
+          echo "press ^C twice to exit."
+
+	  last=$((last+1))
+            }
+
+trap allow_Quit INT
+
+echo "terminate"
+

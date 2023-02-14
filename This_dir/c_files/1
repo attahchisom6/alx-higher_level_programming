@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+char **environ;
+int match_env(char *s)
+{
+	int k, x;
+
+	for (x = 0; environ[x];x++)
+	{
+		k = 0;
+		while (s[k] != '\0')
+		{
+			if (s[k] == environ[x][k])
+				return (1);
+			k++;
+		}
+
+		printf("%s\n", environ[x]);
+	}
+	return (0);
+}
+
+int main(void)
+{
+	int d;
+
+	d = match_env("SHELLi");
+	printf("%d\n", d);
+	return (0);
+}

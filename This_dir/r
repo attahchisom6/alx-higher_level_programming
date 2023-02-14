@@ -1,0 +1,4 @@
+#! /bin/bash
+ B='\033[40;31m'
+source ./y
+echo -e "${A}" && echo -e "${B}"

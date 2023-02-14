@@ -1,0 +1,7 @@
+*.swp
+*~
+#*#
+ctest
+main.c
+_putchar.c
+a.out

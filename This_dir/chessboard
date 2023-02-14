@@ -1,0 +1,21 @@
+#! /bin/bash
+#program to print a chessboard and assign it desired colors
+clear='\033[0m'
+white='\033[0;47m'
+black='\033[0;40m'
+for i in $(seq 1 9 )
+do
+    for j in $(seq 1 9 )
+    do
+        S=$(((i+j)%2))
+        if [ $S -eq 1 ]
+        then
+        printf "$white "
+        else
+        printf "$black "
+     fi
+   done
+ printf "$black "
+ echo 
+done
+done

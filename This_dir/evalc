@@ -1,0 +1,23 @@
+#! /bin/bash
+
+#TESTING THE FUNCTION OF EVAL ON GETOPT
+
+f(){
+	local __me__="${FUNCNAME[0]}"
+	local argv=$(getopt -o 'h'-n $__me__ -- "$@")
+	
+	eval set -- "$argv"
+	
+	while :
+	do
+		case "$1" in
+		     -h) echo "Hello, eval execute the argument string as though it were a standard unix command"   
+			return 0   ;;
+		     --) shift
+		         break     ;;
+          esac
+ done
+
+ echo "$@"
+}
+		        

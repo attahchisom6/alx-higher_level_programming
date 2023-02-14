@@ -1,0 +1,17 @@
+#! /bin/bash
+# MASTERMOSE INTENDS TO CREATE A FUNCTION THAT ACCEPT'S A FUNCTION AS ARGUMENT AND PRINT ITS CONTENT
+for i in $*
+do
+getfunc(){
+	
+	   if [[ $i -eq 0 ]]
+		   then
+			   echo "pls Enteran argument"
+		   else
+			   declare -f "$i"                  fi
+		   
+	 }
+ 
+
+ funcd="$(getfunc $i)"
+ echo "$fund"

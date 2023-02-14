@@ -1,0 +1,27 @@
+#! /bin/bash
+
+#PROGRAM TO READ ANY SEQUENCE OF FILES  TO STDOUT PROVIDED TO THE SCRIPT AS AN ARGUMENT
+for i in "$@"
+do
+	for ((j = 0; j < $#; j++))
+	do
+                 declare -A pn
+                 pn[j]=$i
+	 done
+ done
+
+command="cat"
+
+
+	if [[ -f "${pn[j]}" ]]
+	then
+		echo "reading sequence of file arguments to stdout.."
+		echo ""
+		eval $command "${pn[j]}"
+	else
+		echo "${pn[j]} does  ot exist"
+	fi
+
+
+
+

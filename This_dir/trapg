@@ -1,0 +1,28 @@
+#! /bin/bash
+
+#THIS PROGRAM WILL BE INTERUPTED AFTER SENDING THE SIGINT ^C 3 TIMES
+
+count=0
+stop_func(){
+	      let count++
+	      echo
+	      if [[ $count == 1 ]]
+	      then
+		      echo "stop that!"
+	      elif [[ $count == 2 ]]
+	      then
+		      echo "if you do that again i will quit"
+	      else
+		      echo "thats is it, i quit!"
+	             exit
+		     
+	       fi
+      }
+
+trap stop_func 2
+
+while :
+do
+	echo "sleeping.."
+	sleep 10078
+done

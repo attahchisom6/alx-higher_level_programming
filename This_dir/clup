@@ -1,0 +1,12 @@
+#! /bin/bash
+
+cleanup(){
+           rm --force -- "${tmp}"
+         }
+#trap the special cleanup "EXIT" , which is always run when the shell exit
+trap cleanup EXIT
+
+#create temporary file
+tmp="$(mktemp -p /tmp tmpfilexxxxxxx)"
+
+echo "hello world! I am a coder, i have successfully put this in the temporary file" >> "${tmp}"

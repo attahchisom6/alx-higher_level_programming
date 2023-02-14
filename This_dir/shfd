@@ -1,0 +1,27 @@
+#! /bin/bash
+#TO STUDY THE USE OF THE SHIFT COMMAND
+
+#THE VALUE OF ARG BEFORE SHIFT
+echo "The value of the argument without shift command:"
+i=1
+for value in "$@"
+do
+       echo "arg no. $i is: $value"
+       ((i++))
+done
+echo ""
+echo "The value of the Argument using shift command: "
+i=1
+
+for j in "$@"
+
+do	
+	if [ "$j" != "" ]
+	then
+        echo "The argument no. $i is: $j"
+	fi
+                
+             ((i++))
+      shift
+done
+

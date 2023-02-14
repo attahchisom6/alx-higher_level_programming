@@ -1,0 +1,3 @@
+#This is a makefile for task 0
+all : holberton.o main.o
+	gcc holberton.c main.c -o holberton

@@ -1,0 +1,4 @@
+No su program found on this device. Termux
+does not supply tools for rooting, see e.g.
+http://www.androidcentral.com/root for
+information about rooting Android.

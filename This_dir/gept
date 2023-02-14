@@ -1,0 +1,7 @@
+#! /bin/bash
+
+#TESTING GETOPTS WITH REGARD TO IT'S PARAMETERS
+while getopts "a:b:c" flag
+do
+      echo "flag -$flag, Argument $OPTARG"
+done

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Yhis script serves to kill a process without using the kill command
+
+pkill -f 7-highlander

@@ -1,0 +1,26 @@
+#! /bin/bash
+#TO TEST THE SHIFT COMMAND
+
+
+while [[ $# > 0 ]]
+do
+	case $1 in
+	-a|--valueA) valueA="$2"
+		shift  ;;
+	-b|--valueB) valueB="$2"
+		shift ;;
+	--help|*) echo "USAGE:"
+		 echo "      --valueA: \"valueA\""
+		 echo "      --valueB: \"valueB\""
+		 echo "--help" 
+		  exit 1  ;;
+
+                esac
+
+	shift
+
+done
+
+echo "A: $valueA"
+echo "B: $valueB"
+

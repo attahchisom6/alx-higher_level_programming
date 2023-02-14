@@ -1,0 +1,15 @@
+#! /bin/bash
+
+if [ -z "$1" ]
+then
+	echo Hi
+else
+	count=1
+	while [ $count -le $# ]
+	do
+		STRING="Hello world"
+	        echo $STRING
+		((count++))
+	done
+
+fi

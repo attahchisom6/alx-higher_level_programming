@@ -1,0 +1,10 @@
+#! /bin/bash
+read -p "Pls Enter a search string:" search
+read -p "pls Enter a replacement string:" replacement
+for i in $*
+do
+     if [[ $search != "" && $replacement != "" ]]
+     then
+     sed -i "s/$search/$replacement/" $i
+  fi
+done

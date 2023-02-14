@@ -1,0 +1,12 @@
+#! /bin/bash
+for i in  123 qag 1wb 123974856 .189 '^[0-9]+$' '134. 567'
+do
+        echo -n "Testing $i:"
+	if [[ $i =~ ^[0-9]+$ ]]
+	then
+	echo "$i confirmed and matched"
+        else
+	    echo
+             
+	fi
+done

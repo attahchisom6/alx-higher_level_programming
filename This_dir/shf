@@ -1,0 +1,11 @@
+#! /bin/bash
+echo "total no. of args = $#"
+echo "the args are: $*"
+shift
+echo the first arg arg after shift 1 is:$1
+shift 2
+echo the first argument after shift 2 is:$1
+shift 3
+echo the third arg aftef shift 3 is: $1
+
+

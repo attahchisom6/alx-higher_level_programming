@@ -1,0 +1,32 @@
+#!  /bin/bash
+
+#PROGRAM THAT REQUIRES VARIABLE s To TAKE IETHER 100  OR 10 AS ARGUMENT WHILE LETTIMG THE VARIABLE P TAKE ANY ARGUMENT
+
+USAGE(){
+	  printf "Usage:\n        /.$0 [ -s <10|100> ] [ -p any_string ]" 1>&2
+	  exit 1
+       }  
+
+while getopts ":s:p:" arg
+do
+	case "${arg}" in
+		s) sm=${OPTARG}
+
+			(( sm == 10 || sm == 100 )) || USAGE                  ;;
+
+		p) pm=${OPTARG}  ;;
+		:) echo "E: Argument missing: parse argument to _${OPTARG}"
+			USAGE   ;;
+		*) USAGE        ;;
+	esac
+done
+
+
+if [[ -z "$@" ]]
+then
+       echo	"E: No argument provided: pls input arguments" 
+	USAGE
+fi
+	echo "s = ${sm}"
+	echo "p=${pm}"
+

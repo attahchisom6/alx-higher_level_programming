@@ -1,0 +1,14 @@
+#! /bin/bash
+echo "total no. of args = $#"
+echo "the args are: $*"
+for i in $(seq 1 7)
+do
+shift 
+echo "======================================="
+echo "for shift $i"
+echo the first arg argument after shift $i is:$1
+echo the second argument after shift $i is:$2
+echo the third argument after shift $i is: $3
+done
+echo "======================================="
+

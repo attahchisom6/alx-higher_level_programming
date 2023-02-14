@@ -1,0 +1,60 @@
+#! /bin/bash
+#A PROGRAM TO REQUEST THE NAMES AND AGE'S OF TWO DIFFENT PERSONS AND GIVE THEM TWO DIFFERNT TASK
+echo "Hello, whats your name?"
+read name
+echo "And you, can i know ur name pls?"
+read name1
+read -p "What's your age $name: " age
+read -p "What's your age $name1: " age1
+if [[ $name == $name1 && $age == $age1 ]]
+then
+echo "you are the sane person, sorry, but due to our policy, we can't assign two task to the same persons"
+else
+PS3="What job would you like mr.$name?: "
+select job in "estate developer" "modern home architecturer" "land manager" "palace steward"
+do
+case $job in
+"estate developer")  echo ""
+	break  ;;
+"modern home architecturer") echo ""
+	break  ;;
+"land manager") echo "" 
+	break  ;;
+"palace steward") echo ""
+	break  ;;
+*)echo "The job you chose is not avalaible at the moment, pls try again" 
+	continue  ;;
+
+    esac
+
+done
+
+PS3="What job would you like mr.$name1?: "
+
+select job1 in "estate developer" "modern home architecturer" "land manager" "palace steward"
+do
+	case $job1 in
+        "estate developer") echo "" 
+		break  ;;
+        "modern home architecturer") echo""
+		break  ;;
+        "land manager") echo "" 
+		break  ;;
+        "palace steward") echo ""
+		break  ;;
+        *) echo "The job you chose is not avaiblele at the moment, pls try again" 
+		continue  ;;
+
+       esac
+
+done
+
+if [[ $job == $job1 ]]
+then
+echo "sorry, no two person can get the same job at the same time,try different jobs pls"
+else
+echo "You are welcome and offiicially accepted to work in this humble but prestigioous organisation Mr.$name and Mr.$name1"
+
+      fi
+
+fi

@@ -1,0 +1,62 @@
+The ``0-add_integer`` module
+========================
+
+using ``add_integer``
+---------------------
+
+importing add_integer
+    >>> add_integer = __import__("0-add_integer").add_integer
+
+adding 2 and 4
+    >>> print(add_integer(2, 4))
+    6
+
+adding a = 0, const b = 98
+    >>> print(add_integer(0))
+    98
+
+adding 3 and 97
+    >>> print(add_integer(3, 97))
+    100
+
+adding a float a = 100.3 and const b = 98
+    >>> print(add_integer(100.3))
+    198
+
+if a is a string
+    >>> print(add_integer("school", 4))
+    Traceback (most recent call last):
+    	...
+    TypeError: a must be an integer
+
+if b is a string
+    >>> print(add_integer(4, "school"))
+    Traceback (most recent call last):
+    	...
+    TypeError: b must be an integer
+
+if a is None
+    >>> print(add_integer(None))
+    Traceback (most recent call last):
+    	...
+    TypeError: a must be an integer
+
+case OverFlow:
+if a is too large
+	>>> print(add_integer(float('inf'), 3))
+	Traceback (most recent call last):
+		...
+	OverflowError: cannot convert float infinity to integer
+
+if b is too large
+    >>> print(add_integer(3, float('inf')))
+    Traceback (most recent call last):
+    	...
+    OverflowError: cannot convert float infinity to integer
+
+case NaN:
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    	....
+    ValueError: cannot convert float NaN to integer

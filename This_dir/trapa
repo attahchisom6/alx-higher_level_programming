@@ -1,0 +1,19 @@
+#! /bin/bash
+
+#PROGRAM TO GENERATE AN INFINITE AND THEN  EXIT OR INTERUPT IT WITH THE TRAP COMMAND
+
+functrap(){
+
+trap "echo this program is interupted" SIGINT
+          }
+trap functrap exit
+
+echo "press ctrl+Z to terminate or ctrl+C  to interrupt the programm"
+
+i=1
+while :
+
+do
+	echo "the $ith program is $i"
+	((i++))
+done

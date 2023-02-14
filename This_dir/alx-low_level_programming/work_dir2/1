@@ -1,0 +1,42 @@
+#include "sort.h"
+
+/**
+ * insertion_sort_list - a function to sort a double linked list in
+ * ascending order
+ * @list: double pointer to the first node of the list
+ *
+ * Return: void
+ */
+
+void insertion_sort_list(listint_t **list)
+{
+	listint_t *temp, *node_next, *lts;
+
+	if (list == NULL)
+		return;
+
+	lts = *list;
+	while (lts != NULL)
+	{
+		if (lts->next)
+			node_next = lts->next;
+		while (lts->n > node_next->n)
+		{
+			temp = node_next;
+			node_next = temp->next;
+			temp->prev = lts->prev;
+			if (lts->prev)
+				lts->prev->next = temp;
+			if (temp->next)
+				temp->next->prev = lts;
+			lts->prev = temp;
+			temp->next = lts;
+			if (temp->prev)
+				lts = temp->prev;
+			else
+				*list = temp;
+			print_list(lts);
+		}
+		lts = lts->next;
+	}
+}

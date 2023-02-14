@@ -1,0 +1,61 @@
+#! /bin/bash
+#chessboard development
+read -p "set chessboard cell's width(two cells width space as one unit):" width
+if [[ $width =~ "^[0-9]+$" ]]
+then
+	echo "wrong choice of width, pls check your choice and try again"
+   exit
+fi
+#select width
+let width=$width*2
+
+#select player
+player="player1"
+
+#select players color
+PS3="What color do u want for $player:"
+
+select option in red green yellow blue purple cyan white; do
+	case $reply in
+		[1-7]) if [[ $player ==  player2 ]]
+		then
+			declare -i color2=$reply
+			break
+		else
+			declare -i color1= $reply
+		fi   
+		player="player2"
+		PS3="What color do u want for $player:"           ;;
+	        *)      ;;
+      	        esac    
+	done
+	if [[ color1 == color2 ]]
+	then
+		echo "The color of the two players cannot be the same, pls check your input and select again"
+	   exit
+	fi
+   
+ # Now print the chessboard   
+ for i in $(seq 0 4 )
+ do
+	 let w=$(((width)/2))
+	 for j in $(seq 0 $w )
+	 do
+		 for k in $(seq 0 4 )
+		 do
+			 echo -e "\e[4${color1}m$(printf %${width}s)\e[0m\c"
+			 echo -e "\e[4${color2}m$(printf %${width}s)\e[0m\c"
+		 done
+             echo
+	 done
+	 for j in $(seq 0 $w )
+	 do
+		 for k in $(seq 0 4 )
+		 do
+			 echo -e "\e[4${color2}m$(printf %${width}s)\e[0m\c"
+			 e	cho -e "\e[4${color1}m$(printf %${width}s)\e[0m\c"
+		 done
+	     echo
+	 done
+ done
+			 

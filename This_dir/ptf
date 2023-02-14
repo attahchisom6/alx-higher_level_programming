@@ -1,0 +1,19 @@
+#! /bin/bash
+# MASTERMOSE INTENDS TO CREATE A FUNCTION THAT ACCEPT'S A FUNCTION AS ARGUMENT AND PRINT ITS CONTENT
+
+getfunc(){
+		   
+		declare -f "$@"                 
+		   
+	 }
+for f in "$*"
+do
+	if [[ $f -eq $0 ]]
+	then
+		echo "hello, pls enter an atgument"
+	else
+              funcd="$(getfunc $f)"
+              echo "$funcd"
+	fi
+done
+

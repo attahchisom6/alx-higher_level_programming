@@ -1,0 +1,46 @@
+#! /bin/bash
+echo "=========================================="
+echo ""
+echo "ARGRUMENT PARSING USING FOR LOOP"
+echo ""
+echo "=========================================="
+dr=''
+install=false
+skip=false
+for opt in "$@"
+do
+	if skip
+	then
+		skip=false
+		continue
+	fi
+	case "$opt" in
+	-v|--version) echo "$versio_info"
+		shift
+		exit 0  ;;
+	-h|--help) echo "$help"
+	        shift
+		exit 0  ;;
+	-dr|--doc-root) 
+		if [[ "$1" != "" ]]
+		then
+		dr="${1/%\//}"
+	else
+		echo "No argument providedfor -dr option"
+		fi
+		skip=true
+		shift
+		exit 1  ;;
+	-i|install) install=true
+	        shift
+		exit 0 ;;
+	*) echo "E: invalid optiom: $1"
+		shift
+		exit 1  ;;
+        
+	esac
+
+done
+	
+
+

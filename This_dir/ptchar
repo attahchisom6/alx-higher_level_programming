@@ -1,0 +1,10 @@
+#include <main.h>
+
+int main()
+{
+	char k = 'G';
+
+	pullchar(k);
+	pullchar('\n');
+	return (0);
+}
