@@ -1,9 +1,0 @@
-#! /bin/bash
-#TO  CALCULATE FILESIZE OF THE CURRENT WORKING DIRECTORY
-for i in  $(ls -l .  | grep "^-" | awk '{print $5}')
-do
-    let	totalfilesize=$totalfilesize+$i
-done
-
-echo -n $totalfilesize
-printf "\n"

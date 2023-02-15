@@ -1,9 +1,0 @@
-#! /bin/bash
-echo 'To get a reply choose option [1-4] >'
-read reply
-case $reply in
-   "1") echo "for truck : N.50/km" ;;
-   "2") echo "for toyota: N.30/km" ;;
-   "3"|"4") echo "for Honda: N.80/km" ;;
-   *) echo "The car choice is currently unavalaible" ;;
-esac

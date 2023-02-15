@@ -1,6 +1,0 @@
-#This is a makefile for task 1
-CC = gcc
-SRC = holberton.c main.c
-
-all : holberton.o main.o
-	$(CC) $(SRC) -o holberton

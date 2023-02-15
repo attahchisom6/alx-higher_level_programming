@@ -1,2 +1,0 @@
-#! /bin/bash
-DIRH=$(cd  "$( dirname $HOME  && pwd)")

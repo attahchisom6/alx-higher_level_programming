@@ -1,3 +1,0 @@
-echo "who are u?"
-read remark
-echo hello $remark

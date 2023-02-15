@@ -1,9 +1,0 @@
-#!/usr/bin/env  bash
-#Thus acript will read from etc/passwd username, user id
-#user home directory
-
-file="README.md"
-while read -r line
-do
-	echo $line | cut -d ':' -f1,3,6
-done < $file

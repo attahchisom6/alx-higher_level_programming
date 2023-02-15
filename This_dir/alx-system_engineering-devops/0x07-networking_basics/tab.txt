@@ -1,2 +1,0 @@
-one	two	three	four	five
-alpha	beta	ganma	delta	epsilon

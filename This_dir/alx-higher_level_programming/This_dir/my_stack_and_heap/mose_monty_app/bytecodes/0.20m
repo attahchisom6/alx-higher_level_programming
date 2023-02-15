@@ -1,7 +1,0 @@
-push 1
-push 7
-push 30
-push 0
-pall
-div
-pall
