@@ -1,19 +1,21 @@
 #!/usr/bin/node
-const SquareP = require('./5-square');
+/*
+ * this module is to initalize a child clasd
+ */
 
-class Square extends SquareP {
+const LastSquare = require('./5-square');
+class Square extends LastSquare {
   charPrint (c) {
     if (c === undefined) {
-      c = 'X';
-    }
-    for (let i = 0; i < this.height; i++) {
-      let s = '';
-      for (let j = 0; j < this.width; j++) {
-        s += c;
+      this.print();
+    } else {
+      for (let p = 0; p < this.height; p++) {
+        let str = '';
+        for (let k = 0; k < this.width; k++) {
+          str += c;
+        }
+        console.log(str);
       }
-      console.log(s);
     }
   }
-}
-
-module.exports = Square;
+} module.exports = Square;
