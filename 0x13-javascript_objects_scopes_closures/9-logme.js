@@ -1,7 +1,13 @@
 #!/usr/bin/node
-let narg = 0;
+
+/*
+ * This function gets the index of each argument passed to it
+ */
+
+let numArgs = 0;
 
 exports.logMe = function (item) {
-  console.log(narg + ': ' + item);
-  narg++;
+  const x = `${numArgs}` + ': ' + `${item}`;
+  console.log(x);
+  numArgs++;
 };
