@@ -1,10 +1,15 @@
 #!/usr/bin/node
+/*
+ * This program is to search for the number of occurrrences of
+ * a character in a in a list
+ */
+
 exports.nbOccurences = function (list, searchElement) {
-  let nOccurrences = 0;
-  for (let i = 0; i < list.length; i++) {
-    if (searchElement === list[i]) {
-      nOccurrences++;
+  let nbOccurences = 0;
+  for (const item of list) {
+    if (item === searchElement) {
+      nbOccurences += 1;
     }
   }
-  return nOccurrences;
+  return (nbOccurences);
 };
