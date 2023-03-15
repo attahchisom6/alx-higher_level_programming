@@ -1,13 +1,18 @@
 #!/usr/bin/node
+/*
+ * this progrogram is to reverse the content of a list
+ */
+
 exports.esrever = function (list) {
-  let len = list.length - 1;
-  let i = 0;
-  while ((len - i) > 0) {
-    const aux = list[len];
-    list[len] = list[i];
-    list[i] = aux;
-    i++;
-    len--;
+  const myList = [];
+  const len = list.length;
+  let k = 0;
+
+  let p = len - 1;
+  while (p >= 0) {
+    myList[k] = list[p];
+    k++;
+    p--;
   }
-  return list;
+  return (myList);
 };
