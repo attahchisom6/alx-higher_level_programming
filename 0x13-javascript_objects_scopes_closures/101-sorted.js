@@ -1,13 +1,17 @@
 #!/usr/bin/node
-const dict = require('./101-data.js').dict;
+/*
+ * import a new dictionary, then from it create a new dictionary
+ * where the keys will be the number of occirrences
+ */
 
+const dict = require('./101-data').dict;
 const newDict = {};
 
-Object.getOwnPropertyNames(dict).forEach(occurences => {
-  if (newDict[dict[occurences]] === undefined) {
-    newDict[dict[occurences]] = [occurences];
-  } else {
-    newDict[dict[occurences]].push(occurences);
+Object.keys(dict).map(function (key) {
+  if (newDict[dict[key]] === undefined) {
+    newDict[dict[key]] = [];
   }
+  newDict[dict[key]].push(key);
+  return (newDict);
 });
 console.log(newDict);
