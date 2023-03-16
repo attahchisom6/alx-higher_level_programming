@@ -1,7 +1,11 @@
 #!/usr/bin/node
+/*
+ * this programme converts a number from basr to any base
+ */
 
 exports.converter = function (base) {
-  return function (num) {
-    return num.toString(base);
-  };
+  function denaryToAnyBase (num) {
+    return (num.toString(base));
+  }
+  return (denaryToAnyBase);
 };
