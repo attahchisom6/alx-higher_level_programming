@@ -10,11 +10,11 @@ if __name__ == "__main__":
     db = connect(host="localhost", user=argv[1], passwd=argv[2],
                  db=argv[3], port=3306)
     cuzor = db.cursor()
-    cuzor.execute("SELECT * FROM states")
+    cuzor.execute("SELECT * FROM states WHERE namme LIKE BINARY
+                  'N%'")
     states = cuzor.fetchall()
     for state in states:
-        if state[0] == 'N':
-            print(state)
+        print(state)
 
     cuzor.close()
     db.close()
