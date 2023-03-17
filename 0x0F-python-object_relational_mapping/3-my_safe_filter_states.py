@@ -7,11 +7,11 @@ from MySQLdb import connect
 from sys import argv
 
 if __name__ == "__main__":
-    db = connect(host="localhost", user=argv[1], passd=argv[2], db=argv[3],
+    db = connect(host="localhost", user=argv[1], passwd=argv[2], db=argv[3],
                  port=3306)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name == %s ORDER
-                BY state.id ASCs", (argv[4], ))
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER
+                BY states.id ASC", (argv[4],))
     rows = cur.fetchall()
     for row in rows:
         print(row)
