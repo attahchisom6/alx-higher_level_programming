@@ -12,9 +12,9 @@ if __name__ == "__main__":
             )
     cur = db.cusor()
     cur.execute("SELECT * FROM states")
-    states = cur.fetchall()
-    for state in states:
-        print(state)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
 
     cur.close()
     db.close()
