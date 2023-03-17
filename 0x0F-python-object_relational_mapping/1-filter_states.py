@@ -9,7 +9,7 @@ from MySQLdb import connect
 if __name__ == "__main__":
     db = connect(host="localhost", user=argv[1], passwd=argv[2],
                  db=argv[3], port=3306)
-    cuzor = db.cusor()
+    cuzor = db.cursor()
     cuzor.execute("SELECT * FROM states")
     states = cuzor.fetchall()
     for state in states:
