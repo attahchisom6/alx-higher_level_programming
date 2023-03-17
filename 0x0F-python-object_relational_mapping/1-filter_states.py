@@ -11,7 +11,7 @@ if __name__ == "__main__":
                  db=argv[3], port=3306)
     cuzor = db.cursor()
     cuzor.execute("SELECT * FROM states WHERE name LIKE BINARY
-                  '{}'".format(argv[4]))
+    'N%' ORDER BY states.id ASC")
     states = cuzor.fetchall()
     for state in states:
         print(state)
