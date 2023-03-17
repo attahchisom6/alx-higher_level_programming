@@ -13,7 +13,7 @@ if __name__ == "__main__":
     cuzor.execute("SELECT * FROM states")
     states = cuzor.fetchall()
     for state in states:
-        if states[0] == 'N':
+        if state[0] == 'N':
             print(state)
 
     cuzor.close()
