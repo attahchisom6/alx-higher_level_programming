@@ -2,7 +2,7 @@
 
 """This will select a table states from a database hbtn_0e_0_usa
 """
-from my  MySQL import connect
+from my  MySQLdb import connect
 from sys import argv
 
 if __name__ == "__main__":
