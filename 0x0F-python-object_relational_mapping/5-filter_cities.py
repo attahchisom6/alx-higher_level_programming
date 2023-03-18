@@ -12,7 +12,7 @@ if __name__ == "__main__":
                  port=3306)
     cur = db.cursor()
     cur.execute("""SELECT c.name FROM cities AS c INNER JOIN states AS s \
-            ON c.state_id=s.id WHERE s.name=%s""", (argv[4], ))
+            ON c.state_id=s.id WHERE s.name=%s""", (argv[4], @$#))
 
     rows = cur.fetchall()
     store = list(row[0] for row in rows)
