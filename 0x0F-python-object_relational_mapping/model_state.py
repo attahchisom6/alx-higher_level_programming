@@ -6,7 +6,7 @@ This is the State module
 This module handles  Base that inherits from declarative_Base module
 """
 from sqlalchemy import Integer, Column, String
-from sql.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
