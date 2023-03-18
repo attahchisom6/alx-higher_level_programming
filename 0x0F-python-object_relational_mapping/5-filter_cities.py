@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     rows = cur.fetchall()
     store = list(row[0] for row in rows)
-    print(*store, sep=", ")
+    print(*store, end=", ")
 
     cur.close()
     db.close()
