@@ -15,8 +15,8 @@ if __name__ == "__main__":
             ON c.state_id=s.id WHERE s.name LIKE %s", (argv[4], ))
 
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    store = list(row[0] for row in rows)
+    print(*store, end=", ")
 
     cur.close()
     db.close()
