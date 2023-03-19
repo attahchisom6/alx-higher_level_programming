@@ -17,7 +17,8 @@ if __name__ == "__main__":
 
     delete_states = session.query(State).filter(State.name.contains('a'))
     for state in delete_states:
-        session.delete(state)
+        if state is not None:
+            session.delete(state)
     session.commit()
 
     session.close()
