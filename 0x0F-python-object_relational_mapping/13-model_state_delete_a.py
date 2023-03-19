@@ -15,7 +15,7 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)
     session = session()
 
-    delete_states = session.query(State).filter(State.name.contains('a'))
+    delete_states = session.query(State).filter(State.name.like('%a%'))
     if state is not None:
         for state in delete_states:
             session.delete(state)
