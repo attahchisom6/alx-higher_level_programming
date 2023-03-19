@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
 """
-delete all state containing the letter 'a'
-"""
+ delete all the element in the database containing a
+ """
 from sys import argv
-from model_state import Base, State
+from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -15,10 +15,9 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)
     session = session()
 
-    states = session.query(State).filter(State.name.like('%a%'))
-    if states is not None:
-        for state in states:
-            session.delete(state)
+    delected_states = session.query(State).filter(State.name.contains('a'))
+    for state in delected_states:
+        session.delete(state)
     session.commit()
 
     session.close()
