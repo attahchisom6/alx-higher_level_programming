@@ -4,7 +4,8 @@
 Script to list all elements in the city database
 """
 from sys import argv
-from model_city import City, Base
+from model_base import State, Base
+from model_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
