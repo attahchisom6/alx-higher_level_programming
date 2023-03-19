@@ -18,6 +18,6 @@ if __name__ == "__main__":
     delete_states = session.query(State).filter(State.name.contains('a'))
     for state in delete_states:
         session.delete(state)
-        session.commit()
+    session.commit()
 
     session.close()
