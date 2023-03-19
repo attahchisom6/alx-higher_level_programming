@@ -15,7 +15,7 @@
      session = sessionmaker(bind=engine)
      session = session()
 
-     inserted_state = session.query(State).filter_by(id==2).first()
+     inserted_state = session.query(State).filter_by(id=2).first()
      inserted_state.name = 'New Mexico'
      session.commit()
 
