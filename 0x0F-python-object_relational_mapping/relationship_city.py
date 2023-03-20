@@ -4,8 +4,8 @@
 module to create a child class
 The subclass City relates to the city table and is a child of the state class
 """
+from relationship_state import Base
 from sqlalchemy import Integer, String, Column, ForeignKey
-from model_state import Base
 
 
 class City(Base):
