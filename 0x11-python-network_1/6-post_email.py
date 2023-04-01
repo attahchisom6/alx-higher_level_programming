@@ -11,6 +11,5 @@ if __name__ == "__main__":
     from sys import argv
     from requests import post
 
-    response = post(argv[1], value={"email": argv[2]})
-    txt = response.text
-    print(txt)
+    response = post(argv[1], data={"email": argv[2]})
+    print(response.text)
