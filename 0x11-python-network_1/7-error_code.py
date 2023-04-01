@@ -12,4 +12,5 @@ if __name__ == "__main__":
     response = get(argv[1])
     if respnse.status_code >= 400:
         print("Error code: {}".format(response.status_code))
-    print(response.text)
+    else:
+        print(response.text)
