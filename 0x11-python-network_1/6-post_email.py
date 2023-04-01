@@ -10,8 +10,7 @@ from requests import post
 
 if __name__ == "__main__":
     """send a post request to a url"""
-    value = {"email": argv[2]}
 
-    response = post(argv[1], value)
+    response = post(argv[1], value={"email": argv[2]})
     txt = response.text
-    print (txt)
+    print(txt)
