@@ -11,9 +11,9 @@ def get_url_value(argv):
     """
     gets the value of the header in the url with key 'X-Request-Id'
     """
-    arg = argv[1]
-    url = get(arg)
-    print(url.headers['X-Request-Id'])
+    url = argv[1]
+    response = get(url)
+    print(response.headers['X-Request-Id'])
 
 
 if __name__ == "__main__":
