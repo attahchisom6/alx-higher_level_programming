@@ -9,9 +9,10 @@ from sys import argv
 
 def get_url_value(argv):
     """
-    gets the value of the header in the url with key 'X-header-Id'
+    gets the value of the header in the url with key 'X-Request-Id'
     """
-    url = get(argv[1])
+    arg = argv[1]
+    url = get(arg)
     print(url.headers['X-Request-Id'])
 
 
