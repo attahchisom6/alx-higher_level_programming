@@ -14,8 +14,8 @@ if __name__ == "__main__":
     j_response = response.json()
     try:
         for k in range(10):
-            commit = "{}: {}".format(j_response[k].get(
-            "sha"), j_response[k].get("commit").get("author").get("name"))
+            commit = "{}: {}".format(j_response[k].get("sha"), j_response[k]
+                                     .get("commit").get("author").get("name"))
             print(commit)
     except IndexError:
         pass
