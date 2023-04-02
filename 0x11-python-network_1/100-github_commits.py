@@ -12,7 +12,10 @@ if __name__ == "__main__":
     response = get(url)
 
     j_response = response.json()
-    for k in range(10):
+    try:
+        for k in range(10):
         commit = "{}: {}".format(j_response[k].get(
             "sha"), j_response[k].get("commit").get("author").get("name"))
         print(commit)
+    except IndexError:
+        pass
