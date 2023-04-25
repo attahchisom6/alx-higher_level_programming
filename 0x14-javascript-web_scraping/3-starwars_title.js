@@ -8,7 +8,7 @@ const request = require('request');
 const epiNum = process.argv[2];
 const url = `https://swapi-api.alx-tools.com/api/films/${epiNum}`;
 
-request.get(url, (error, response, body) => {
+request.get(url, (error, body) => {
   if (error) {
     console.log(error);
   } else {
