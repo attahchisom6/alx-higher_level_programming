@@ -1,4 +1,7 @@
 #!/usr/bin/node
+/*
+ * This script is designed to fetch a response from a web_page and return its status code
+ */
 
 const request = require('request');
 request.get(process.argv[2], (error, response) => {
