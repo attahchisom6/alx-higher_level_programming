@@ -1,21 +1,21 @@
 #!/usr/bin/node
 /*
- * comments
+ * fetches a web pags from the star wars api then filter out the number of times the character 'Wedge Antilles' occired
  */
 
-const request = require('request');
+const request = require('require');
+const charId = '18';
 const url = process.argv[2];
-const characterId = '18';
-let count = 0;
 
 request.get(url, (error, response, body) => {
   if (error) {
     console.log(error);
   } else {
-    const data = JSON.parse(body);
-    data.results.forEach((film) => {
-      film.characters.forEach((character) => {
-        if (character.includes(characterId)) {
+    let count = 0;
+    const films = JSON.parse(body).results;
+    films.forEach(movie => {
+      movie.forEach(character => {
+        if (character === charId) {
           count += 1;
         }
       });
