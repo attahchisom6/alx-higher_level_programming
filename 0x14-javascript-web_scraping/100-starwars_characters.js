@@ -5,7 +5,7 @@
 
 const request = require('request');
 const epiID = process.argv[2];
-const url = `https://swapi.dev/api/films/${epiID}`
+const url = `https://swapi.dev/api/films/${epiID}`;
 
 request.get(url, (error, response, body) => {
   if (error) {
@@ -21,6 +21,6 @@ request.get(url, (error, response, body) => {
         const Jchar = JSON.parse(body);
         console.log(Jchar.name);
       }
-    })
-  })
+    });
+  });
 });
