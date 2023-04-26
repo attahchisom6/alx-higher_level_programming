@@ -15,7 +15,7 @@ request.get(url, (error, response, body) => {
     const films = JSON.parse(body).results;
     films.forEach(movie => {
       movie.characters.forEach(character => {
-        if (if character.includes(charId)) {
+        if (character.includes(charId)) {
           count += 1;
         }
       });
