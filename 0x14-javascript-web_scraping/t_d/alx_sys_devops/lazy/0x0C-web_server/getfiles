@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+export files=$(find . -maxdepth 1 -type f -name '*[1-9]*')
+# export files=$(ls *[1-9]*)
