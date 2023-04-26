@@ -14,7 +14,7 @@ request.get(url, (error, response, body) => {
     let count = 0;
     const films = JSON.parse(body).results;
     films.forEach(movie => {
-      movie.forEach(character => {
+      movie.characters.forEach(character => {
         if (character === charId) {
           count += 1;
         }
