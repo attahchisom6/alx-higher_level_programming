@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# This script adds the public key to the server
-#ssh-copy-id -i ~/.ssh/alx.pub ubuntu@54.208.84.31
-#seems this works better
-#change ./alx.pub to the path of your public key e.g. ~/.ssh/school.pub
-cat ./alx.pub | ssh school "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
