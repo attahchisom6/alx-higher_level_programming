@@ -1,34 +1,29 @@
 #!/usr/bin/node
+/*
+ * script to get a synchronous list names from an api, that is the list is got in other in which it placed on the api
+ */
 
 const request = require('request');
+const epiId = process.argv[2];
+const url = `https://swapi.dev/api/films/${epiId}`;
 
-const movieId = process.argv[2];
-const url = `https://swapi.dev/api/films/${movieId}/`;
-let characters = [];
-
-request(url, (error, response, body) => {
+request.get(url, async (error, response, body) => {
   if (error) {
     console.log(error);
-    return;
   }
 
-  const data = JSON.parse(body);
-  characters = data.characters;
-  getCharacters(0);
+  const Jdata = JSON.parse(body).characters;
+  for (const character of Jdata) {
+    const name = await new Promise((resolve, reject) => {
+      request.get(character, (error, response, body) => {
+        if (error) {
+          reject(error);
+        } else {
+          const Jchar = JSON.parse(body);
+          resolve(Jchar.name);
+        }
+      });
+    });
+    console.log(name);
+  }
 });
-
-const getCharacters = (index) => {
-  if (index === characters.length) {
-    return;
-  }
-
-  request(characters[index], (error, response, body) => {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    const characterData = JSON.parse(body);
-    console.log(characterData.name);
-    getCharacters(index + 1);
-  });
-};
